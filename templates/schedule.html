@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Расписание — Личный кабинет</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0b0f19;
+            color: #ffffff;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        aside {
+            width: 240px;
+            background-color: #0f1629;
+            padding: 24px 16px;
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid #1e293b;
+            flex-shrink: 0;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 36px;
+            padding-left: 8px;
+        }
+
+        .logo-icon {
+            background-color: #4f46e5;
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .logo-text {
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        .nav-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            list-style: none;
+        }
+
+        .nav-item a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            color: #94a3b8;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+
+        .nav-item.active a, .nav-item a:hover {
+            background-color: #4f46e5;
+            color: #ffffff;
+        }
+
+        main {
+            flex: 1;
+            padding: 40px;
+            display: block;
+        }
+
+        .content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .page-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .page-title span {
+            color: #4f46e5;
+        }
+
+        .card {
+            background-color: #111827;
+            border: 1px solid #1f2937;
+            border-radius: 16px;
+            padding: 32px;
+        }
+
+        .card h2 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .add-form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 32px;
+        }
+
+        .add-form select,
+        .add-form input {
+            padding: 12px 16px;
+            border-radius: 10px;
+            border: 1px solid #1f2937;
+            background-color: #0f1629;
+            color: #ffffff;
+            font-size: 14px;
+            font-family: 'Inter', sans-serif;
+            outline: none;
+        }
+
+        .add-form select:focus,
+        .add-form input:focus {
+            border-color: #4f46e5;
+        }
+
+        .add-form button {
+            padding: 12px 24px;
+            border-radius: 10px;
+            border: none;
+            background-color: #4f46e5;
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .add-form button:hover {
+            background-color: #4338ca;
+        }
+
+        .lesson-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .lesson-item {
+            background-color: #0f1629;
+            border: 1px solid #1f2937;
+            border-radius: 12px;
+            padding: 14px 18px;
+            font-size: 15px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .lesson-item .day {
+            color: #4f46e5;
+            font-weight: 600;
+            min-width: 120px;
+        }
+
+        .lesson-item .number {
+            color: #94a3b8;
+            min-width: 70px;
+        }
+
+        .lesson-item .subject-name {
+            color: #ffffff;
+            flex: 1;
+        }
+
+        .delete-btn {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            opacity: 0.6;
+            transition: 0.2s;
+            color: #94a3b8;
+        }
+
+        .delete-btn:hover {
+            opacity: 1;
+            color: #ef4444;
+        }
+
+        .empty-text {
+            color: #94a3b8;
+            font-size: 14px;
+            text-align: center;
+            padding: 20px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <aside>
+        <div class="logo-area">
+            <div class="logo-icon">🎓</div>
+            <div class="logo-text">Личный кабинет<
+ченика</div>
+        </div>
+        <ul class="nav-menu">
+            <li class="nav-item"><a href="/">🏠 Главная</a></li>
+            <li class="nav-item"><a href="/subject">📚 Предметы</a></li>
+            <li class="nav-item active"><a href="/schedule">📅 Расписание</a></li>
+            <li class="nav-item"><a href="#">📊 Оценки</a></li>
+            <li class="nav-item"><a href="#">📝 Заметки</a></li>
+        </ul>
+    </aside>
+
+    <main>
+        <div class="content">
+            <h1 class="page-title">📅 <span>Расписание</span></h1>
+
+            <div class="card">
+                <h2>Добавить урок</h2>
+                <form method="post" class="add-form">
+                    <select name="day" required>
+                        <option value="">День недели</option>
+                        <option value="Понедельник">Понедельник</option>
+                        <option value="Вторник">Вторник</option>
+                        <option value="Среда">Среда</option>
+                        <option value="Четверг">Четверг</option>
+                        <option value="Пятница">Пятница</option>
+                        <option value="Суббота">Суббота</option>
+                    </select>
+
+                    <input type="number" name="number" placeholder="Номер урока" min="1" max="8" required>
+
+                    <select name="subject_id" required>
+                        <option value="">Выберите предмет</option>
+                        {% for subject in subjects %}
+                            <option value="{{ subject.id }}">{{ subject.name }}</option>
+                        {% endfor %}
+                    </select>
+
+                    <button type="submit">Добавить</button>
+                </form>
+
+                <h2>Список уроков</h2>
+                {% if lessons %}
+                    <ul class="lesson-list">
+                        {% for lesson in lessons %}
+                            <li class="lesson-item">
+                                <span class="day">{{ lesson.day }}</span>
+                                <span class="number">{{ lesson.number }} урок</span>
+                                <span class="subject-name">{{ lesson.subject.name }}</span>
+                                <form method="post" action="/delete_lesson/{{ lesson.id }}" style="margin-left: auto;">
+                                    <button type="submit" class="delete-btn">🗑️</button>
+                                </form>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p class="empty-text">Пока нет уроков. Добавь первый!</p>
+                {% endif %}
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>
